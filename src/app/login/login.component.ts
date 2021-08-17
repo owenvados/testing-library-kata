@@ -25,6 +25,22 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isValidEmail(): boolean {
+    const mail = this.form.get('mail');
+    if (!mail) {
+      return false;
+    }
+    return mail.valid && mail.dirty || mail.pristine;
+  }
+
+  isValidPassword(): boolean {
+    const password = this.form.get('password');
+    if (!password) {
+      return false;
+    }
+    return password.valid && password.dirty || password.pristine;
+  }
+
   submit(): void {
     this.authService.login(this.form.get('mail')?.value, this.form.get('password')?.value);
   }

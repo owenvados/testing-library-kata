@@ -2,6 +2,8 @@
 
 <form [formGroup]="form" (ngSubmit)="submit()">
   <input type="text" formControlName="mail"/>
+  <span *ngIf="!isValidEmail()" class="error">Please enter a valid email</span>
   <input type="password" formControlName="password"/>
+  <span *ngIf="!isValidPassword()" class="error">Please enter a valid password</span>
   <button [disabled]="form.invalid">Save</button>
 </form>
