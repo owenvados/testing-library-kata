@@ -6,6 +6,11 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+  import JasmineDOM from '@testing-library/jasmine-dom/dist';
+
+  beforeAll(() => {
+    jasmine.addMatchers(JasmineDOM);
+  });
 
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
@@ -25,3 +30,5 @@ getTestBed().initTestEnvironment(
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
+
+
