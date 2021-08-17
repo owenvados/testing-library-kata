@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService,
   ) {
     this.form = this.formBuilder.group({
 			mail: ['', [Validators.required, Validators.email]],
@@ -24,6 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    console.log('submit')
+    this.authService.login(this.form.get('mail')?.value, this.form.get('password')?.value);
   }
 }

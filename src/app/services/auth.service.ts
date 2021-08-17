@@ -11,7 +11,8 @@ export class AuthService {
 
   }
 
-  async login(username: string, password: string): Promise<void> {
+  async login(email: string, password: string): Promise<void> {
+    console.log('Login for user: ', email);
     this.router.navigate(['dashboard']);
   }
 }
